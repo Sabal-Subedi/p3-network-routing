@@ -116,7 +116,7 @@ I will use two of such priority queue: array and binary heap, to analyze the Asy
     swap\_nodes takes $O(1)$ time \\
     and space complexity is $O(1)$ space
     \item delete\_min method has two function calls \\
-    bubble\_down takes $O(\log n)$ times; this method switch the root and child node in a tree of depth $O(\log n)$\\
+    bubble\_down takes $O(\log n)$ times; this method switch the parent and child node in a tree of depth $O(\log n)$\\
     swap\_nodes takes $O(1)$ time\\
     space complexity is $O(1)$ space 
 \end{enumerate}
@@ -127,6 +127,8 @@ I will use two of such priority queue: array and binary heap, to analyze the Asy
     &where,\ V \ is \ verticies \ in \ graph
 \end{split}
 \end{equation}
+
+\newpage
 
 \subsection{Pseudocode for unsorted array priority queue}
 \begin{lstlisting}[style=mystyle]
@@ -224,8 +226,9 @@ I will use two of such priority queue: array and binary heap, to analyze the Asy
             return min_index
 
         last_index = len(self.queue) - 1
+        # swaps the item at the end with root and return the root node
         self.swap_nodes(0, last_index)
-        self.queue.pop() # swaps the item at the end with root and return the root node
+        self.queue.pop() 
         self.bubble_down(0)
 
         return min_index
